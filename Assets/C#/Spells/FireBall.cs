@@ -16,7 +16,7 @@ public class FireBall : MonoBehaviour, ISpell
         setup = true;
     }
     public void Cast() {
-       
+        GetComponent<Spell>().SetTimer();
         Collider2D[] colliders = Physics2D.OverlapCircleAll(circle.transform.position,circle.transform.localScale.x/2,enemyLayers);
         Enemy[] enemies =new Enemy[colliders.Length];
         if(colliders!=null) {

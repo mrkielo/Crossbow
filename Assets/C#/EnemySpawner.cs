@@ -58,10 +58,47 @@ public class EnemySpawner : MonoBehaviour {
                 Spawn(enemy,pos);
                 pos.x-=enemyWidth/2;
                 pos.y+=enemyHeight;
+                Spawn(enemy,pos);           //e e
+                pos.x+=enemyWidth;          // e
                 Spawn(enemy,pos);
-                pos.x+=enemyWidth;
+                return Random.Range(3f,6f);
+
+            case 4: 
+                pos.x = Random.Range(-maxPos+enemyWidth,maxPos-enemyWidth);
+                pos.y = transform.position.y;pos.x-=enemyWidth/2;
+                pos.y+=enemyHeight;
                 Spawn(enemy,pos);
-                return Random.Range(3f,6f);            
+                Spawn(enemy,pos);
+                pos.x-=enemyWidth/2;
+                pos.y+=enemyHeight*0.75f; //  e   e
+                Spawn(enemy,pos);         //   e e
+                pos.x-=enemyWidth/2;      //    e
+                pos.y+=enemyHeight*0.75f;
+                Spawn(enemy,pos);
+                pos.x+=enemyWidth*2;
+                Spawn(enemy,pos);
+                pos.y-=enemyHeight*0.75f;
+                pos.x-=enemyWidth/2;
+                Spawn(enemy,pos);
+                return Random.Range(4f,8f);       
+
+            case 5:
+            Vector2 pos2;
+                pos.x = Random.Range(-maxPos+enemyWidth/2,maxPos-enemyWidth*3.5f);
+                pos.y = pos2.y = transform.position.y;
+                pos2.x = pos.x + enemyWidth*3;
+                Spawn(enemy,pos);
+                Spawn(enemy,pos2);
+                pos.y = pos2.y = pos.y+enemyHeight/2;   //e  e
+                Spawn(enemy,pos);                       //e  e
+                Spawn(enemy,pos2);                      //e  e
+                pos.y = pos2.y = pos.y+enemyHeight/2;   //e  e
+                Spawn(enemy,pos);
+                Spawn(enemy,pos2);
+                pos.y = pos2.y = pos.y+enemyHeight/2;
+                Spawn(enemy,pos);
+                Spawn(enemy,pos2);
+                return Random.Range(5f,10f);
         }
 
         return 0;
@@ -88,7 +125,6 @@ public class EnemySpawner : MonoBehaviour {
                 max=array[i];
                 index = i;
             }
-
         }
         return index;
     }

@@ -25,10 +25,9 @@ public class Bow : MonoBehaviour
     
     void Update()
     {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if(Input.GetKey(KeyCode.Mouse0)) {
             float delay = 60/firerate;
-
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             rb.position = new Vector2(Mathf.Clamp(mousePos.x,-width,width),rb.position.y);
             if(lastShoot + delay<Time.time) {       
                 Shoot();
