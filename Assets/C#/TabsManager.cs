@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class TabsManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] GameObject[] tabs;
+    [SerializeField] ColorToggler[] buttons;
+    [SerializeField] Color offColor;
+    [SerializeField] Color onColor;
+
+    public void ShowMenu() {
+        gameObject.SetActive(true);
+        ShowTab(0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void HideMenu() {
+        gameObject.SetActive(false); 
+    }
+    
+    public void ShowTab(int index) {
+        for(int i=0; i<tabs.Length;i++) {
+            tabs[i].SetActive(false);
+            buttons[i].Toggle(offColor);
+        }
+        tabs[index].SetActive(true);
+        buttons[index].Toggle(onColor);
     }
 }
